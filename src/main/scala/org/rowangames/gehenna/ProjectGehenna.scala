@@ -55,7 +55,7 @@ val GAME_BG_PX = ' '&&(ORIG_BLUE, ORIG_BLUE) // Background pixel.
 
 object ProjectGehenna:
     def main(args: Array[String]): Unit =
-        val bgPx = CPPixel('.', C_GRAY2, C_GRAY1) // Background pixel.
+        //val bgPx = CPPixel('.', C_GRAY2, C_GRAY1) // Background pixel.
         val dim = CPDim(80, 20) // Dimension for the scenes.
 
         // Initialize the engine.
