@@ -32,13 +32,9 @@ package org.rowangames.gehenna
 
 import org.cosplay.*
 import CPColor.*
-import CPKeyboardKey.*
-import prefabs.images.ani.*
 import prefabs.scenes.*
-import prefabs.shaders.*
 import CPFIGLetFont.*
-import org.cosplay.CPPixel.*
-
+import CPPixel.*
 
 val BLUE_BLACK = CPColor("0x00000F")
 val ORIG_BLUE = CPColor("0x003040")
@@ -51,19 +47,21 @@ val C6 = CPColor("0x66FFB2") // Light olive.
 val CS = Seq(C1, C2, C3, C4, C5, C6)
 
 val LOGO_BG_PX = ' '&&(BLUE_BLACK, BLUE_BLACK)
-val GAME_BG_PX = ' '&&(ORIG_BLUE, ORIG_BLUE) // Background pixel.
+val GAME_BG_PX = ' '&&(BLUE_BLACK, BLUE_BLACK) // Background pixel.
 
 object ProjectGehenna:
     def main(args: Array[String]): Unit =
-        //val bgPx = CPPixel('.', C_GRAY2, C_GRAY1) // Background pixel.
-        val dim = CPDim(80, 20) // Dimension for the scenes.
+        val dim = CPDim(100, 100) // Dimension for the scenes.
 
         // Initialize the engine.
-        CPEngine.init(CPGameInfo(name = "Project Gehenna", initDim = Option(dim)))
+        CPEngine.init(CPGameInfo(
+            name = "Project Gehenna",
+            initDim = Option(dim)
+        ))
 
         try
             CPEngine.startGame(
-                new CPFadeShimmerLogoScene("logo", None, LOGO_BG_PX, CS, "title"),
+                new CPSlideShimmerLogoScene("logo", None, LOGO_BG_PX, CS, "title"),
                 ProjectGehennaTitle,
             )
         finally CPEngine.dispose()

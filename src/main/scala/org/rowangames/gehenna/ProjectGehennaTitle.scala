@@ -17,7 +17,9 @@
 
 package org.rowangames.gehenna
 
-import org.cosplay.CPScene
+import org.cosplay.CPFIGLetFont.*
+
+import org.cosplay.*
 
 /*
    _________            ______________
@@ -33,4 +35,24 @@ import org.cosplay.CPScene
 */
 
 
-object ProjectGehennaTitle extends CPScene("title", None, GAME_BG_PX)
+object ProjectGehennaTitle extends CPScene("title", None, GAME_BG_PX):
+    private val finalTitleText = "Project Gehenna"
+    private var currTitleText = ""
+
+    private def titleImage(): CPImage = FIG_OGRE.render(currTitleText, C1).trimBg()
+
+    private val titleSpr = new CPImageSprite("title", 0, 0, 1, titleImage()):
+        private var index = 0
+        private val len = finalTitleText.length
+        private val freq = CPEngine.fps / 2
+        override def update(ctx: CPSceneObjectContext): Unit =
+            setX((ctx.getCanvas.w - getWidth) / 2)
+
+            if index <= len && ctx.getFrameCount % freq == 0 then
+                currTitleText = finalTitleText.substring(0, index)
+                index += 1
+                setImage(titleImage())
+
+    addObjects(
+        titleSpr
+    )
