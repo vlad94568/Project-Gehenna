@@ -5,5 +5,5 @@ ThisBuild / scalaVersion := "3.1.1"
 lazy val root = (project in file("."))
   .settings(
     name := "Project-Gehenna",
-    libraryDependencies += "org.cosplayengine" % "cosplay" % "0.7.0"
+    libraryDependencies += "org.cosplayengine" % "cosplay" % "0.7.2"
   )
