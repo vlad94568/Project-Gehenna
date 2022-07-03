@@ -17,9 +17,8 @@
 
 package org.rowangames.gehenna
 
-import org.cosplay.CPFIGLetFont.*
-
 import org.cosplay.*
+import CPFIGLetFont.*
 
 /*
    _________            ______________
