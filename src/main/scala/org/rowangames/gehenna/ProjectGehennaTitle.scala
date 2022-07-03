@@ -42,16 +42,20 @@ object ProjectGehennaTitle extends CPScene("title", None, GAME_BG_PX):
     private def titleImage(): CPImage = FIG_OGRE.render(currTitleText, C1).trimBg()
 
     private val titleSpr = new CPImageSprite("title", 0, 0, 1, titleImage()):
-        private var index = 0
+        private var index = 1
         private val len = finalTitleText.length
         private val freq = CPEngine.fps / 2
+
+        private val clickSound = CPSound(src = "click.wav")
+
         override def update(ctx: CPSceneObjectContext): Unit =
-            setX((ctx.getCanvas.w - getWidth) / 2)
+            setX((ctx.getCanvas.w - 74) / 2)
 
             if index <= len && ctx.getFrameCount % freq == 0 then
                 currTitleText = finalTitleText.substring(0, index)
                 index += 1
                 setImage(titleImage())
+                clickSound.play(0)
 
     addObjects(
         titleSpr
